@@ -7,8 +7,9 @@ const {
 } = require("../middlewares/jwtAuthMiddleware");
 const { postValidation } = require("../middlewares/validationMiddleware");
 
+router.get("/", (req, res) => res.json({ message: "Welcome to post route" }));
 //route to get all posts
-router.get("/", postController.getAllPosts);
+router.get("/allPosts", postController.getAllPosts);
 
 //route to get details of single post
 router.get("/:postId", postController.getSinglePost);
