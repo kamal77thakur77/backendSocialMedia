@@ -12,11 +12,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-  res.send(`Hello, World! this is default route in app.js \n
-  >The Routes for registeration and logging in are \n
-  /auth\n
-  >The Routes for Posts related work are\n
-  /post\n
+  res.send(`Hello, World! this is default route in app.js <br>
+  >The Routes for registeration and logging in are <br>
+  /auth<br>
+  >The Routes for Posts related work are<br>
+  /post <br>
   `);
 });
 
