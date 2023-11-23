@@ -3,6 +3,7 @@ const { connectDB } = require("./db/db");
 const app = express();
 const authRoutes = require("./routes/authRoutes");
 const postRoutes = require("./routes/postRoutes");
+const path = require("path");
 
 const bodyParser = require("body-parser");
 
@@ -11,14 +12,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Parse JSON data
 app.use(bodyParser.json());
 
+//builtin middleware for static serving of html pages
+app.use(express.static(__dirname + "/public"));
 app.get("/", (req, res) => {
-  res.send(`Hello, World! this is default route in app.js <br>
-  >The Routes for registeration and logging in are <br>
-  /auth<br>
-  >The Routes for Posts related work are<br>
-  /post <br>
-  `);
+  res.render("index");
 });
+
+// app.get("/", (req, res) => {
+//   res.send(`Hello, World! this is default route in app.js <br>
+//   >The Routes for registeration and logging in are <br>
+//   /auth<br>
+//   >The Routes for Posts related work are<br>
+//   /post <br>
+//   `);
+// });
 
 app.use("/auth", authRoutes);
 app.use("/post", postRoutes);

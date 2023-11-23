@@ -1,0 +1,26 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: white;
+    overflow: hidden;
+}
+section{
+    background: #ffea00;
+    height: 100vh;
+}
+
+p{
+    height: 100vh;
+    font-size: 13px;
+    line-height: 10px;
+    background: url(https://media1.giphy.com/media/lcs5BL0NIM4WMv61a9/giphy.gif?cid=ecf05e47wnqlo2d5q9ps098h4snw8e8xmozi2k8fw8wyool7&ep=v1_gifs_search&rid=giphy.gif&ct=g) no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: rgba(255,255,255,0);
+    font-weight: 1000;
+    margin: 0;
+    mix-blend-mode: darken;
+}

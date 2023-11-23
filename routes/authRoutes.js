@@ -6,7 +6,11 @@ const {
   loginValidation,
 } = require("../middlewares/validationMiddleware");
 
-router.get("/", (req, res) => res.json({ message: "Welcome" }));
+router.get("/", (req, res) =>
+  res.json({
+    message: "Welcome to auth route here we handle login and sign up",
+  })
+);
 
 //register a user
 
