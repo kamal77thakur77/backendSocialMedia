@@ -1,19 +1,32 @@
-body{
+body {
     margin: 0;
     padding: 0;
     background: white;
     overflow: hidden;
 }
-section{
+
+section {
     background: #ff2626;
     height: 100vh;
+    position: relative; /* Make the section a positioning context */
 }
 
-p.text{
+p.info, p.text {
+    position: absolute;
     width: 100%;
-    word-break: break-all;
-    height: 100vh;
     font-size: 13px;
+    font-weight: 1000;
+    margin: 0;
+}
+
+p.info {
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+    line-height: 20px;
+}
+
+p.text {
     line-height: 10px;
     background: url(https://media1.giphy.com/media/lcs5BL0NIM4WMv61a9/giphy.gif?cid=ecf05e47wnqlo2d5q9ps098h4snw8e8xmozi2k8fw8wyool7&ep=v1_gifs_search&rid=giphy.gif&ct=g) no-repeat;
     background-size: cover;
@@ -22,19 +35,5 @@ p.text{
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: rgb(142 154 176 / 15%);
-    font-weight: 1000;
-    margin: 0;
     mix-blend-mode: darken;
-}
-
-p.info{
-    font-size: 13px;
-    font-weight: 1000;
-    margin: 0;
-    color: white;
-    text-align: center;
-    margin-bottom: 10px;
-    line-height: 20px;
-
-
 }
