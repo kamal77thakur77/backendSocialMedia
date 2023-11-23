@@ -27,8 +27,8 @@ app.get("/", (req, res) => {
 //   `);
 // });
 
-app.use("/auth", authRoutes);
-app.use("/post", postRoutes);
+app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/post", postRoutes);
 
 const PORT = process.env.PORT || 3000;
 

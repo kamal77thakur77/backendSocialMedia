@@ -9,7 +9,7 @@ section{
     height: 100vh;
 }
 
-p{
+p.text{
     width: 100%;
     word-break: break-all;
     height: 100vh;
@@ -25,4 +25,16 @@ p{
     font-weight: 1000;
     margin: 0;
     mix-blend-mode: darken;
+}
+
+p.info{
+    font-size: 13px;
+    font-weight: 1000;
+    margin: 0;
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+    line-height: 20px;
+
+
 }
