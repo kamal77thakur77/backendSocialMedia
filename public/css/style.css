@@ -5,11 +5,13 @@ body{
     overflow: hidden;
 }
 section{
-    background: #ffea00;
+    background: #ff2626;
     height: 100vh;
 }
 
 p{
+    width: 100%;
+    word-break: break-all;
     height: 100vh;
     font-size: 13px;
     line-height: 10px;
@@ -19,7 +21,7 @@ p{
     background-position: center;
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: rgba(255,255,255,0);
+    -webkit-text-fill-color: rgb(142 154 176 / 15%);
     font-weight: 1000;
     margin: 0;
     mix-blend-mode: darken;
