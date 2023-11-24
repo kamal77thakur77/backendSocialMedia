@@ -33,7 +33,7 @@ p.text {
     background-attachment: fixed;
     background-position: center;
     -webkit-background-clip: text;
-    background-clip: text;
+    background-clip: text; 
     -webkit-text-fill-color: rgb(142 154 176 / 15%);
     mix-blend-mode: darken;
 }

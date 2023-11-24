@@ -4,7 +4,6 @@ async function paginateResults(page, limit, totalCount) {
 
   const totalPages = Math.ceil(totalCount / perPage);
   const startIndex = (currentPage - 1) * perPage;
-
   return {
     startIndex,
     limit: perPage,

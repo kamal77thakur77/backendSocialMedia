@@ -3,7 +3,6 @@ const { connectDB } = require("./db/db");
 const app = express();
 const authRoutes = require("./routes/authRoutes");
 const postRoutes = require("./routes/postRoutes");
-const path = require("path");
 
 const bodyParser = require("body-parser");
 
@@ -11,6 +10,10 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 // Parse JSON data
 app.use(bodyParser.json());
+
+//cross origin
+const cors = require("cors");
+app.use(cors());
 
 //builtin middleware for static serving of html pages
 app.use(express.static(__dirname + "/public"));

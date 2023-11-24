@@ -95,11 +95,7 @@ const getAllPosts = async (req, res, next) => {
     const totalCount = await Post.countDocuments();
 
     //paginate results
-    const paginatedResults = await paginateResults(
-      Post,
-      { page, limit },
-      totalCount
-    );
+    const paginatedResults = await paginateResults(page, limit, totalCount);
 
     //fetch posts for the current page
     const posts = await Post.find()
