@@ -31,7 +31,7 @@ async function signup(req, res, next) {
     res.status(201).json({ msg: "User created successfully", data: user });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ msg: "Error registering user" });
+    res.status(500).error({ msg: "Error registering user" });
   }
 }
 
