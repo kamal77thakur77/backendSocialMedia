@@ -17,7 +17,7 @@ async function signup(req, res, next) {
     if (existingUser) {
       return res
         .status(400)
-        .json({ msg: "User already exists with that email" });
+        .json({ msg: "User already exists with that email", success: false });
     }
     //hasing password with bcrypt
     const hashedPassword = await brcypt.hash(password, 10);
@@ -28,10 +28,12 @@ async function signup(req, res, next) {
     });
     await user.save();
 
-    res.status(201).json({ msg: "User created successfully", data: user });
+    res
+      .status(201)
+      .json({ msg: "User created successfully", success: true, data: user });
   } catch (error) {
     console.log(error);
-    res.status(500).error({ msg: "Error registering user" });
+    res.status(500).json({ msg: "Error registering user", success: false });
   }
 }
 
@@ -46,11 +48,15 @@ async function login(req, res, next) {
 
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ msg: "User does not exist" });
+      return res
+        .status(400)
+        .json({ msg: "User does not exist", success: false });
     }
     const isMatch = await brcypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ msg: "Invalid credentials" });
+      return res
+        .status(400)
+        .json({ msg: "Invalid credentials", success: false });
     }
 
     // Generate JWT token
@@ -59,10 +65,18 @@ async function login(req, res, next) {
     });
     console.log(token);
 
-    res.status(200).json({ msg: "User logged in successfully", token: token });
+    res
+      .status(200)
+      .json({
+        msg: "User logged in successfully",
+        success: true,
+        token: token,
+      });
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ msg: "Internal Server Error" });
+    return res
+      .status(500)
+      .json({ msg: "Internal Server Error", success: false });
   }
 }
 
