@@ -65,13 +65,11 @@ async function login(req, res, next) {
     });
     console.log(token);
 
-    res
-      .status(200)
-      .json({
-        msg: "User logged in successfully",
-        success: true,
-        token: token,
-      });
+    res.status(200).json({
+      msg: "User logged in successfully",
+      success: true,
+      token: token,
+    });
   } catch (error) {
     console.log(error);
     return res
@@ -80,4 +78,63 @@ async function login(req, res, next) {
   }
 }
 
-module.exports = { signup, login };
+async function getProfile(req, res) {
+  try {
+    // console.log(req.user);
+    const user = await User.findById(req.user._id);
+
+    if (!user) {
+      return res.status(404).json({ msg: "User not found", success: false });
+    }
+
+    const userProfile = {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+    };
+
+    res.status(200).json({
+      msg: "User profile retrieved",
+      success: true,
+      data: userProfile,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: "Internal Server Error", success: false });
+  }
+}
+
+async function updateProfile(req, res) {
+  try {
+    const { name, password } = req.body;
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array(), success: false });
+    }
+
+    const user = await User.findById(req.user._id);
+
+    if (!user) {
+      return res.status(404).json({ msg: "User not found", success: false });
+    }
+
+    if (name) {
+      user.name = name;
+    }
+
+    if (password) {
+      const hashedPassword = await brcypt.hash(password, 10);
+      user.password = hashedPassword;
+    }
+
+    await user.save();
+
+    res.status(200).json({ msg: "User profile updated", success: true });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: "Internal Server Error", success: false });
+  }
+}
+
+module.exports = { signup, login, getProfile, updateProfile };

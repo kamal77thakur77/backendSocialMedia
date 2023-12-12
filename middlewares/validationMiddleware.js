@@ -29,4 +29,14 @@ const loginValidation = [
     .withMessage("Password must be at least 6 characters long"),
 ];
 
-module.exports = { postValidation, signupValidation, loginValidation };
+const validateUserUpdate = [
+  body("name").isAlpha().optional(),
+  body("password").optional().isLength({ min: 6 }),
+];
+
+module.exports = {
+  postValidation,
+  signupValidation,
+  loginValidation,
+  validateUserUpdate,
+};
